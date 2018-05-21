@@ -7,15 +7,22 @@ import registerServiceWorker from './registerServiceWorker';
 const players = [
   {
     name: 'Kyle Pfromer',
-    score: 30
+    score: 30,
+    id: 1
   },
   {
     name: 'Ben Groover',
-    score: 31
+    score: 31,
+    id: 2
   },
   {
     name: 'Sean Hinds',
-    score: 35
+    score: 35,
+    id: 3
+  },
+  {
+    name: 'Scoreless',
+    id: 4
   }
 ];
 
