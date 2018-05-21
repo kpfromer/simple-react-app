@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import './App.css';
 import Player from './Player';
+import Header from "./Header";
 
 class App extends Component {
 
@@ -16,9 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="scoreboard">
-        <div className="header">
-          <h1>{this.props.title}</h1>
-        </div>
+        <Header title={this.props.title}/>
 
         <div className="players">
           <Player name="Kyle Pfromer" score={32}/>
