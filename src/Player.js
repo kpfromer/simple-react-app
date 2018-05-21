@@ -6,7 +6,7 @@ class Player extends Component {
 
   static propTypes = {
     name: PropTypes.string.isRequired,
-    score: PropTypes.number.isRequired
+    score: PropTypes.number
   };
 
   render() {
