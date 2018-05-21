@@ -15,7 +15,7 @@ class Player extends Component {
     return (
       <div className="player">
         <div className="player-name">
-          <a className="remove-player" onClick={this.props.onRemove}>-</a>
+          <a className="remove-player" onClick={this.props.onRemove}>✖</a>
           {this.props.name}
         </div>
         <div className="player-score">
