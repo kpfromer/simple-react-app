@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import './App.css';
+import Player from './Player';
 
 class App extends Component {
 
@@ -20,31 +21,8 @@ class App extends Component {
         </div>
 
         <div className="players">
-          <div className="player">
-            <div className="player-name">
-              Jim Hoskins
-            </div>
-            <div className="player-score">
-              <div className="counter">
-                <button className="counter-action decrement"> - </button>
-                <div className="counter-score"> 31 </div>
-                <button className="counter-action increment"> + </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="player">
-            <div className="player-name">
-              Andrew Chalkey
-            </div>
-            <div className="player-score">
-              <div className="counter">
-                <button className="counter-action decrement"> - </button>
-                <div className="counter-score"> 33 </div>
-                <button className="counter-action increment"> + </button>
-              </div>
-            </div>
-          </div>
+          <Player name="Kyle Pfromer" score={32}/>
+          <Player name="Andrew Chalkey" score={33}/>
         </div>
       </div>
     );
