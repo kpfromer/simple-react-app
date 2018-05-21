@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="scoreboard">
-        <Header title={this.props.title}/>
+        <Header title={this.props.title} players={this.state.players}/>
 
         <div className="players">
           {this.state.players.map((player, index) => (
