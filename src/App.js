@@ -38,8 +38,8 @@ class App extends Component {
   };
 
   removePlayer = playerIndex => {
-    this.setState(prevState => update(prevState, {
-      players: {$unset: [playerIndex]}
+    this.setState(prevState => ({
+      players: update(prevState.players, {$splice: [[playerIndex, 1]]})
     }))
   };
 
