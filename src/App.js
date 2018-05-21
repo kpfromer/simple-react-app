@@ -6,11 +6,18 @@ import Header from "./Header";
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      players: props.initialPlayers
+    }
+  }
+
   static propTypes = {
     title: PropTypes.string,
-    players: PropTypes.arrayOf(PropTypes.shape({
+    initialPlayers: PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
-      score: PropTypes.number,
+      score: PropTypes.number.isRequired,
       id: PropTypes.number.isRequired
     })).isRequired
   };
@@ -19,14 +26,26 @@ class App extends Component {
     title: 'Scoreboard'
   };
 
+  onScoreChange(index, delta) {
+    this.setState(prevState => {
+      prevState.players[index].score += delta;
+      return prevState;
+    });
+  }
+
   render() {
     return (
       <div className="scoreboard">
         <Header title={this.props.title}/>
 
         <div className="players">
-          {this.props.players.map(player => (
-            <Player key={player.id} name={player.name} score={player.score}/>
+          {this.state.players.map((player, index) => (
+            <Player
+              onScoreChange={delta => this.onScoreChange(index, delta)}
+              key={player.id}
+              name={player.name}
+              score={player.score}
+            />
           ))}
         </div>
       </div>

@@ -19,12 +19,8 @@ const players = [
     name: 'Sean Hinds',
     score: 35,
     id: 3
-  },
-  {
-    name: 'Scoreless',
-    id: 4
   }
 ];
 
-ReactDOM.render(<App title="My Scoreboard" players={players} />, document.getElementById('root'));
+ReactDOM.render(<App title="My Scoreboard" initialPlayers={players} />, document.getElementById('root'));
 registerServiceWorker();
