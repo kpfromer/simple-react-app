@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Stats from "./Stats";
 import { PlayersShape } from "./PlayerShape";
+import Stopwatch from "./Stopwatch";
 
 class Header extends Component {
 
@@ -19,6 +20,7 @@ class Header extends Component {
       <div className="header">
         <Stats players={this.props.players}/>
         <h1>{this.props.title}</h1>
+        <Stopwatch/>
       </div>
     );
   }
