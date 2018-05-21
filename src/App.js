@@ -7,7 +7,11 @@ import Header from "./Header";
 class App extends Component {
 
   static propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
+    players: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      score: PropTypes.number.isRequired
+    })).isRequired
   };
 
   static defaultProps = {
@@ -20,8 +24,9 @@ class App extends Component {
         <Header title={this.props.title}/>
 
         <div className="players">
-          <Player name="Kyle Pfromer" score={32}/>
-          <Player name="Andrew Chalkey" score={33}/>
+          {this.props.players.map(player => (
+            <Player key={player.name} name={player.name} score={player.score}/>
+          ))}
         </div>
       </div>
     );
