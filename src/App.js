@@ -7,6 +7,8 @@ import { PlayersShape } from "./PlayerShape";
 import update from 'immutability-helper';
 import AddPlayer from "./AddPlayer";
 
+let idStart = 4;
+
 class App extends Component {
 
   constructor(props) {
@@ -46,13 +48,15 @@ class App extends Component {
       players: {
         $push: [
           {
-            id: prevState.players[prevState.players.length-1].id + 1,
+            id: idStart,
             name: playerName,
             score: 0
           }
         ]
       }
-    }))
+    }));
+
+    idStart += 1;
   };
 
   render() {
