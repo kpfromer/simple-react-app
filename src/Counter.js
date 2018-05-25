@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-class Counter extends Component {
+export default class Counter extends PureComponent {
 
   static propTypes = {
     score: PropTypes.number.isRequired,
@@ -18,5 +18,3 @@ class Counter extends Component {
     );
   }
 }
-
-export default Counter;

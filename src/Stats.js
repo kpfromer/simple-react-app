@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { PlayersShape } from "./PlayerShape";
 
-class Stats extends Component {
+export default class Stats extends PureComponent {
 
   static propTypes = {
     players: PlayersShape.isRequired
@@ -29,5 +29,3 @@ class Stats extends Component {
     );
   }
 }
-
-export default Stats;
