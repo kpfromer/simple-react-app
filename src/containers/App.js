@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './App.css';
-import Player from './Player';
-import Header from "./Header";
-import { PlayersShape } from "./PlayerShape";
+import '../App.css';
 import update from 'immutability-helper';
-import AddPlayer from "./AddPlayer";
+import Player from "../Player";
+import Header from "../Header";
+import AddPlayerForm from "../AddPlayerForm";
+import { PlayersShape } from '../PlayerShape';
 
 let idStart = 4;
 
@@ -76,7 +76,7 @@ class App extends Component {
           ))}
         </div>
 
-        <AddPlayer onAdd={this.addPlayer}/>
+        <AddPlayerForm onAdd={this.addPlayer}/>
       </div>
     );
   }
