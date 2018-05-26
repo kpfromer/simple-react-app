@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import '../App.css';
 import update from 'immutability-helper';
-import Player from "../Player";
-import Header from "../Header";
-import AddPlayerForm from "../AddPlayerForm";
+import Player from "../components/Player";
+import Header from "../components/Header";
+import AddPlayerForm from "../components/AddPlayerForm";
 
 let idStart = 4;
 
