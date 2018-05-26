@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './containers/App';
+import Scoreboard from './containers/Scoreboard';
 import registerServiceWorker from './registerServiceWorker';
 
 const players = [
@@ -22,5 +22,5 @@ const players = [
   }
 ];
 
-ReactDOM.render(<App title="My Scoreboard" initialPlayers={players} />, document.getElementById('root'));
+ReactDOM.render(<Scoreboard title="My Scoreboard" initialPlayers={players} />, document.getElementById('root'));
 registerServiceWorker();

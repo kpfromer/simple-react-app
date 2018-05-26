@@ -9,7 +9,7 @@ import { PlayersShape } from '../PlayerShape';
 
 let idStart = 4;
 
-class App extends Component {
+class Scoreboard extends Component {
 
   constructor(props) {
     super(props);
