@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import '../App.css';
 import update from 'immutability-helper';
 import Player from "../Player";
 import Header from "../Header";
 import AddPlayerForm from "../AddPlayerForm";
-import { PlayersShape } from '../PlayerShape';
 
 let idStart = 4;
 
-class Scoreboard extends Component {
+export default class Scoreboard extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      players: props.initialPlayers
-    }
-  }
-
-  static propTypes = {
-    title: PropTypes.string,
-    initialPlayers: PlayersShape.isRequired
-  };
-
-  static defaultProps = {
-    title: 'Scoreboard'
+  state = {
+    players: [
+      {
+        name: 'Kyle Pfromer',
+        score: 30,
+        id: 1
+      },
+      {
+        name: 'Ben Groover',
+        score: 31,
+        id: 2
+      },
+      {
+        name: 'Sean Hinds',
+        score: 35,
+        id: 3
+      }
+    ]
   };
 
   onScoreChange = (index, delta) => {
@@ -62,7 +64,7 @@ class Scoreboard extends Component {
   render() {
     return (
       <div className="scoreboard">
-        <Header title={this.props.title} players={this.state.players}/>
+        <Header title="Scoreboard" players={this.state.players}/>
 
         <div className="players">
           {this.state.players.map((player, index) => (
@@ -81,5 +83,3 @@ class Scoreboard extends Component {
     );
   }
 }
-
-export default App;
