@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as PlayerActionCreators from '../actions/player';
 import update from 'immutability-helper';
 import Player from "../components/Player";
 import Header from "../components/Header";
@@ -6,79 +9,49 @@ import AddPlayerForm from "../components/AddPlayerForm";
 
 let idStart = 4;
 
-export default class Scoreboard extends Component {
+class Scoreboard extends Component {
 
-  state = {
-    players: [
-      {
-        name: 'Kyle Pfromer',
-        score: 30,
-        id: 1
-      },
-      {
-        name: 'Ben Groover',
-        score: 31,
-        id: 2
-      },
-      {
-        name: 'Sean Hinds',
-        score: 35,
-        id: 3
-      }
-    ]
-  };
-
-  onScoreChange = (index, delta) => {
-    this.setState(prevState => update(prevState, {
-      players: {
-        [index]: {
-          score: {$set: prevState.players[index].score + delta}
-        }
-      }
-    }));
-  };
-
-  removePlayer = playerIndex => {
-    this.setState(prevState => ({
-      players: update(prevState.players, {$splice: [[playerIndex, 1]]})
-    }))
-  };
-
-  addPlayer = playerName => {
-    this.setState(prevState => update(prevState, {
-      players: {
-        $push: [
-          {
-            id: idStart,
-            name: playerName,
-            score: 0
-          }
-        ]
-      }
-    }));
-
-    idStart += 1;
+  static propTypes = {
+    players: PropTypes.array.isRequired
   };
 
   render() {
+
+    const { dispatch, players } = this.props;
+
+    // bindActionCreators ensures when addPlayer is invoked it is also dispatched to the redux store
+    const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
+    const removePlayer= bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
+    const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
+
+    const playerComponents = players.map((player, index) => (
+      <Player
+        index={index}
+        name={player.name}
+        score={player.score}
+        onRemove={removePlayer}
+        onScoreChange={updatePlayerScore}
+        key={player.name}
+      />
+    ));
+    
     return (
       <div className="scoreboard">
-        <Header title="Scoreboard" players={this.state.players}/>
+        <Header title="Scoreboard" players={players}/>
 
         <div className="players">
-          {this.state.players.map((player, index) => (
-            <Player
-              onRemove={() => this.removePlayer(index)}
-              onScoreChange={delta => this.onScoreChange(index, delta)}
-              key={player.id}
-              name={player.name}
-              score={player.score}
-            />
-          ))}
+          {playerComponents}
         </div>
 
-        <AddPlayerForm onAdd={this.addPlayer}/>
+        <AddPlayerForm onAdd={addPlayer}/>
       </div>
     );
   }
 }
+
+// maps redux state to "players" prop that is given to the Scoreboard as a prop
+const mapStateToProps = state => ({
+  players: state
+});
+
+export default connect(mapStateToProps)(Scoreboard);
