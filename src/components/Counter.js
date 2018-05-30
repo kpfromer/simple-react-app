@@ -5,15 +5,22 @@ export default class Counter extends PureComponent {
 
   static propTypes = {
     score: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired
+    index: PropTypes.number.isRequired,
+    updatePlayerScore: PropTypes.func.isRequired
   };
 
   render() {
     return (
       <div className="counter">
-        <button className="counter-action decrement" onClick={() => this.props.onChange(-1)}> - </button>
+        <button className="counter-action decrement"
+                onClick={() => this.props.updatePlayerScore(this.props.index, -1)}>
+          -
+        </button>
         <div className="counter-score">{this.props.score}</div>
-        <button className="counter-action increment" onClick={() => this.props.onChange(1)}> + </button>
+        <button className="counter-action increment"
+                onClick={() => this.props.updatePlayerScore(this.props.index, 1)}>
+          +
+        </button>
       </div>
     );
   }

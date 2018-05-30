@@ -1,33 +1,34 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class AddPlayerForm extends PureComponent {
+export default class AddPlayerForm extends Component {
 
   state = {
     name: ''
   };
 
   static propTypes = {
-    onAdd: PropTypes.func.isRequired
+    addPlayer: PropTypes.func.isRequired
   };
 
-  onSubmit = event => {
+  addPlayer = event => {
     event.preventDefault();
 
     if (this.state.name.length !== 0) {
-      this.props.onAdd(this.state.name);
+      this.props.addPlayer(this.state.name);
       this.setState(prevState => prevState.name = '');
     }
   };
 
   handleChange = event => {
-    this.setState({name: event.target.name});
+    console.log('set state', event.target);
+    this.setState({name: event.target.value});
   };
 
   render() {
     return (
       <div className="add-player-form">
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.addPlayer}>
           <input type="text" value={this.state.name} onChange={this.handleChange}/>
           <input type="submit" value="Add Player"/>
         </form>

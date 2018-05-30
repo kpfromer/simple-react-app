@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as PlayerActionCreators from '../actions/player';
@@ -29,8 +30,8 @@ class Scoreboard extends Component {
         index={index}
         name={player.name}
         score={player.score}
-        onRemove={removePlayer}
-        onScoreChange={updatePlayerScore}
+        removePlayer={removePlayer}
+        updatePlayerScore={updatePlayerScore}
         key={player.name}
       />
     ));
@@ -43,7 +44,7 @@ class Scoreboard extends Component {
           {playerComponents}
         </div>
 
-        <AddPlayerForm onAdd={addPlayer}/>
+        <AddPlayerForm addPlayer={addPlayer}/>
       </div>
     );
   }
