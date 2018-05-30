@@ -9,7 +9,8 @@ class Player extends Component {
     index: PropTypes.number.isRequired,
     score: PropTypes.number.isRequired,
     removePlayer: PropTypes.func.isRequired,
-    updatePlayerScore: PropTypes.func.isRequired
+    updatePlayerScore: PropTypes.func.isRequired,
+    selectPlayer: PropTypes.func.isRequired
   };
 
   render() {
@@ -17,7 +18,9 @@ class Player extends Component {
       <div className="player">
         <div className="player-name">
           <a className="remove-player" onClick={() => this.props.removePlayer(this.props.index)}>✖</a>
-          {this.props.name}
+          <a onClick={() => this.props.selectPlayer(this.props.index)}>
+            {this.props.name}
+          </a>
         </div>
         <div className="player-score">
           <Counter

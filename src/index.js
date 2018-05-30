@@ -8,7 +8,8 @@ import Scoreboard from './containers/Scoreboard';
 import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(
-  PlayerReducer
+  PlayerReducer,
+  window.devToolsExtension && window.devToolsExtension()
 );
 
 ReactDOM.render(

@@ -21,7 +21,6 @@ export default class AddPlayerForm extends Component {
   };
 
   handleChange = event => {
-    console.log('set state', event.target);
     this.setState({name: event.target.value});
   };
 
