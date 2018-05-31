@@ -7,6 +7,7 @@ import Player from "../components/Player";
 import Header from "../components/Header";
 import AddPlayerForm from "../components/AddPlayerForm";
 import PlayerDetail from "../components/PlayerDetail";
+import UndoRedo from "./UndoRedo";
 
 class Scoreboard extends Component {
 
@@ -49,6 +50,7 @@ class Scoreboard extends Component {
         <AddPlayerForm addPlayer={addPlayer}/>
 
         <PlayerDetail selectedPlayer={selectedPlayer} />
+        <UndoRedo />
       </div>
     );
   }
@@ -56,8 +58,8 @@ class Scoreboard extends Component {
 
 // maps redux state to "players" prop that is given to the Scoreboard as a prop
 const mapStateToProps = state => ({
-  players: state.players,
-  selectedPlayerIndex: state.selectedPlayerIndex
+  players: state.present.players,
+  selectedPlayerIndex: state.present.selectedPlayerIndex
 });
 
 export default connect(mapStateToProps)(Scoreboard);

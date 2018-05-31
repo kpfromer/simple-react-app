@@ -6,9 +6,10 @@ import PlayerReducer from './reducers/player';
 import './index.css';
 import Scoreboard from './containers/Scoreboard';
 import registerServiceWorker from './registerServiceWorker';
+import undoable from "./reducers/undoable";
 
 const store = createStore(
-  PlayerReducer,
+  undoable(PlayerReducer),
   window.devToolsExtension && window.devToolsExtension()
 );
 
